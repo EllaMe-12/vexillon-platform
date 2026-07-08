@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VeXillon — Elite AI Background Orchestration</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="intro-portal">
+  <div class="intro-shatter-container">
+    <div class="intro-x-line left-wing"></div>
+    <div class="intro-x-line right-wing"></div>
+    <div class="intro-brand-text">V e <span class="custom-x">𝕏</span> i l l o n</div>
+  </div>
+</div>
+
+<div id="cur-dot"></div>
+<div id="cur-ring"></div>
+
+<div class="hero-bg-x">𝕏</div>
+
+<div id="main-public-room" style="opacity: 0;">
+  <nav id="nav">
+    <div class="nav-logo">Ve<span class="custom-x">𝕏</span>illon</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#engines">Our Tools</a></li>
+      <li><a href="#pricing">Plans</a></li>
+      <li><a href="#" id="nav-terminal-trigger" class="text-acc">Client Dashboard</a></li>
+    </ul>
+    <div class="nav-right" style="display: flex; align-items: center; gap: 1.8rem;">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">☾</button>
+      <button id="cartTrigger" class="cart-icon-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="cart-svg"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+        <span id="cartCount">0</span>
+      </button>
+      <a href="#" id="profileTrigger" class="nav-cta">Profile</a>
+    </div>
+  </nav>
+
+  <section id="hero">
+    <div class="hero-eyebrow">Smart Background Assistants</div>
+    <h1 class="hero-h1">AI assistants that <em>maximize your productivity</em> effortlessly.</h1>
+    <p class="hero-sub">VeXillon builds intelligent, invisible AI helpers that handle routine workflows silently in the background. They organize data, process alerts, and generate deep tactical reviews while you direct your focus forward.</p>
+    <div class="hero-actions">
+      <a href="#pricing" class="btn-acc">Choose Your Bot</a>
+      <a href="#about" class="btn-ghost">Learn More <span>→</span></a>
+    </div>
+  </section>
+
+  <section id="about" class="inner">
+    <div class="about-grid">
+      <div class="about-left">
+        <span class="sec-lbl">The Idea</span>
+        <h2 class="sec-h2">Delegate complexity to continuous machinery.</h2>
+        <p class="simple-text">Instead of constantly shifting tabs and cutting data manually, our background assistants execute routine processing logic flawlessly right inside your digital architecture.</p>
+        <div class="about-pull">
+          <p>"True productivity means having a quiet machine handle the busywork perfectly."</p>
+        </div>
+      </div>
+      <div class="about-right">
+        <div class="stat-box">
+          <div class="stat-num">100%</div>
+          <div class="stat-lbl">Autonomous background orchestration. No manual manual updates required.</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">15+ Hours</div>
+          <div class="stat-lbl">Average production capacity reclaimed per user every single week.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how-it-works" class="inner" style="background: var(--surface-2);">
+    <span class="sec-lbl">Simple Setup</span>
+    <h2 class="sec-h2">Get started in three easy steps.</h2>
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="how-num">01 / SELECT</div>
+        <h3>Select Your AI Bot 🤖</h3>
+        <p class="simple-text">Choose the specialized workflow container that fits your operational needs—from managing emails to assigning meeting coverage.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-num">02 / SECURE</div>
+        <h3>Secure Checkout 💳</h3>
+        <p class="simple-text">Activate your background instance instantly and safely through our secure encrypted Razorpay global network pipeline.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-num">03 / MONITOR</div>
+        <h3>Track Your Metrics 📈</h3>
+        <p class="simple-text">Sign in to your private visual dashboard console to watch live performance logs and telemetry actions processed by your bot.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="engines" class="inner">
+    <span class="sec-lbl">Our Core Bots</span>
+    <h2 class="sec-h2">Choose your automated helper.</h2>
+    <div class="engines-layout">
+      <div class="engines-left">
+        <div class="engine-card active" onclick="switchEngine(0)">
+          <span class="eng-tag">Bot 01</span>
+          <h3>The Email & Draft Assistant ✉️</h3>
+        </div>
+        <div class="engine-card" onclick="switchEngine(1)">
+          <span class="eng-tag">Bot 02</span>
+          <h3>The Autonomous Meeting Representative 📝</h3>
+        </div>
+        <div class="engine-card" onclick="switchEngine(2)">
+          <span class="eng-tag">Bot 03</span>
+          <h3>The Voice Task Multitasker 🎙️</h3>
+        </div>
+      </div>
+      <div class="engines-right" id="engineDisplay">
+        </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="inner" style="background: var(--surface-2);">
+    <div class="pricing-hdr">
+      <div>
+        <span class="sec-lbl">Fair Plans</span>
+        <h2 class="sec-h2" style="margin-bottom:0;">Pricing Options</h2>
+      </div>
+      <div class="region-select-wrap">
+        <label for="regionSelect">Your Region:</label>
+        <select id="regionSelect" onchange="changeRegion(this.value)">
+          <option value="IN">India (INR / ₹)</option>
+          <option value="US">United States (USD / $)</option>
+          <option value="GB">Great Britain (GBP / £)</option>
+          <option value="EU">Eurozone (EUR / €)</option>
+          <option value="JP">Japan (JPY / ¥)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="plans-grid">
+      <div class="plan-card">
+        <span class="plan-badge">Bot 01</span>
+        <h3>Email & Drafts ✉️</h3>
+        <p class="plan-desc">Automatically sorts your incoming emails and prepares smart draft replies ready for your approval.</p>
+        <div class="plan-price" id="p3Amt">--</div>
+        <ul class="plan-feats">
+          <li>Categorizes all context logs</li>
+          <li>Constructs secure draft files</li>
+        </ul>
+        <button class="plan-btn" onclick="addToCart(0)">Add to Cart</button>
+      </div>
+      <div class="plan-card featured">
+        <span class="plan-badge text-acc">Bot 02</span>
+        <h3>Meeting Representative 📝</h3>
+        <p class="plan-desc">Joins your active scheduled meetings autonomously on your behalf, records audio logs, and details all task actions.</p>
+        <div class="plan-price" id="p6Amt">--</div>
+        <ul class="plan-feats">
+          <li>Attends video links natively</li>
+          <li>Compiles interactive summaries</li>
+        </ul>
+        <button class="plan-btn btn-acc" onclick="addToCart(1)">Add to Cart</button>
+      </div>
+      <div class="plan-card">
+        <span class="plan-badge">Bot 03</span>
+        <h3>Voice & Tasks 🎙️</h3>
+        <p class="plan-desc">Converts quick verbal voice descriptions and audio files straight into neat structured action checklists.</p>
+        <div class="plan-price" id="p12Amt">--</div>
+        <ul class="plan-feats">
+          <li>Transcribes spoken concepts</li>
+          <li>Organizes interactive lists</li>
+        </ul>
+        <button class="plan-btn" onclick="addToCart(2)">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="inner">
+    <div class="faq-grid">
+      <div>
+        <span class="sec-lbl">Common Questions</span>
+        <h2 class="sec-h2">Frequently Asked Questions</h2>
+      </div>
+      <div class="faq-items">
+        <div class="faq-item">
+          <button class="faq-q">Is user configuration data safe? <span class="faq-ico">+</span></button>
+          <div class="faq-a"><p class="simple-text">Completely. All data transformations are encrypted via TLS 1.3 pipelines and calculated in ephemeral background processes that never log client access tokens.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How do currency evaluations dynamically compute? <span class="faq-ico">+</span></button>
+          <div class="faq-a"><p class="simple-text">Our front-end pricing framework evaluates baseline exchange parameters to format prices instantly to your preferred local system checkout structures.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div id="authenticated-terminal-room" style="display: none; opacity: 0; min-height: 100vh; background: #030303; color: #f0ede8;">
+  <nav id="nav-terminal" style="padding: 1.5rem 4rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(197, 168, 128, 0.15); background: #080808;">
+    <div class="nav-logo" style="color: var(--acc);">VE<span class="custom-x">𝕏</span>ILLON // PANEL</div>
+    <div style="display: flex; align-items: center; gap: 2rem;">
+      <span id="terminal-operator-badge" style="font-family: var(--font-serif); font-size: 0.9rem; color: var(--text-2);">User Status: Guest Log</span>
+      <button id="terminal-disconnect-btn" class="nav-cta" style="border-color: var(--text-3); color: var(--text-2);">Exit Panel</button>
+    </div>
+  </nav>
+
+  <div id="terminal-auth-checkpoint" class="inner" style="max-width: 480px; padding-top: 6rem;">
+    <div style="background: #0d0d0d; border: 1px solid var(--border-acc); padding: 3rem;">
+      <span class="sec-lbl">Security Verification</span>
+      <h2 style="font-family: var(--font-serif); font-weight: 300; margin-bottom: 1rem;">Client Sign In</h2>
+      <p style="font-size: 0.85rem; color: var(--text-2); margin-bottom: 2rem; line-height: 1.5;">Please input your verified configuration profile identity credentials to sync running processes.</p>
+      
+      <label style="font-size:0.75rem; text-transform:uppercase; color:var(--text-3); display:block; margin-bottom:0.5rem;">Registered Email Account</label>
+      <input type="text" id="term-uid-input" class="auth-input" placeholder="name@work.edu">
+      
+      <label style="font-size:0.75rem; text-transform:uppercase; color:var(--text-3); display:block; margin-bottom:0.5rem;">Security Token (Password)</label>
+      <input type="password" id="term-pwd-input" class="auth-input" placeholder="**********">
+      
+      <button onclick="attemptTerminalAuthentication()" class="auth-btn" style="background: var(--acc); color: #050505;">Launch Dashboard</button>
+    </div>
+  </div>
+
+  <div id="terminal-workspace-view" class="inner" style="display: none; max-width: 1400px; padding: 4rem 2rem;">
+    <div style="margin-bottom: 4rem; border-bottom: 1px solid var(--border); padding-bottom: 2rem;">
+      <span class="sec-lbl" style="color:var(--acc);">Telemetry Active</span>
+      <h1 id="terminal-welcome-h1" style="font-family: var(--font-serif); font-size: 2.8rem; font-weight: 300;">Workspace Cockpit</h1>
+      <p style="color: var(--text-2); font-size: 0.95rem; margin-top: 0.5rem;">Background process infrastructure status: <span style="color:#5cb85c; font-weight:600;">OPERATIONAL</span></p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 3rem; margin-bottom: 4rem;">
+      <div style="background: #0d0d0d; border: 1px solid var(--border); padding: 2.5rem;">
+        <h3 style="font-family: var(--font-serif); font-size: 1.25rem; font-weight: 400; margin-bottom: 1.5rem; color: var(--acc);">Weekly Completed Actions</h3>
+        <div style="position: relative; height: 300px; width: 100%;">
+          <canvas id="telemetryChart"></canvas>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+        <div style="background: #0d0d0d; border: 1px solid var(--border); padding: 1.8rem; display: flex; flex-direction: column; justify-content: center;">
+          <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-3);">Total Process Loops Managed</span>
+          <span style="font-family: var(--font-serif); font-size: 2.2rem; color: var(--acc); font-weight: 300; margin-top: 0.5rem;">4,291,084</span>
+        </div>
+        <div style="background: #0d0d0d; border: 1px solid var(--border); padding: 1.8rem; display: flex; flex-direction: column; justify-content: center;">
+          <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-3);">Continuous Active Tasks</span>
+          <span style="font-family: var(--font-serif); font-size: 2.2rem; font-weight: 300; margin-top: 0.5rem;">12 Live Nodes</span>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-family: var(--font-serif); font-size: 1.6rem; font-weight: 400; margin-bottom: 2rem; border-left: 2px solid var(--acc); padding-left: 1rem;">Assigned Instanced Assistants</h3>
+    <div id="terminal-allocated-engines-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;"></div>
+  </div>
+</div>
+
+<div id="cartDrawerOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10002;">
+  <div style="position: absolute; right: 0; top: 0; width: 420px; max-width: 100%; height: 100%; background: #0d0d0d; border-left: 1px solid var(--border-acc); padding: 3rem 2.5rem; display: flex; flex-direction: column; color: var(--text);">
+    <button id="cartCloseBtn" style="position: absolute; top: 20px; left: 20px; background: none; border: none; color: var(--text-3); font-size: 1.2rem; cursor: pointer;">✕ Close</button>
+    <h2 style="font-family: var(--font-serif); font-size: 1.8rem; font-weight: 400; margin-top: 1.5rem; margin-bottom: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem;">Your Cart 🛒</h2>
+    <div id="cartItemsList" style="flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 1.5rem;"></div>
+    <div style="border-top: 1px solid var(--border); padding-top: 2rem; margin-top: auto;">
+      <div style="display: flex; justify-content: space-between; font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 1.5rem;">
+        <span>Total Evaluation:</span>
+        <strong id="cartTotalSum" style="color: var(--acc);">₹0</strong>
+      </div>
+      <div style="margin-bottom: 1.5rem;">
+        <label style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-3); display: block; margin-bottom: 0.5rem;">Choose Plan Duration</label>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem;">
+          <button onclick="setCartDuration(3)" id="cd-3" class="duration-btn active" style="font-size:0.8rem;">3 Months</button>
+          <button onclick="setCartDuration(6)" id="cd-6" class="duration-btn" style="font-size:0.8rem;">6 Mos (-10%)</button>
+          <button onclick="setCartDuration(12)" id="cd-12" class="duration-btn" style="font-size:0.8rem;">1 Year (-20%)</button>
+        </div>
+      </div>
+      <button onclick="proceedToCheckoutPayment()" class="auth-btn" style="background: var(--acc); color: #050505;">Proceed to Checkout</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="profileOverlay">
+  <div class="modal" style="max-width: 440px;">
+    <button class="modal-x" onclick="document.getElementById('profileOverlay').style.display='none'">✕</button>
+    <span class="sec-lbl">User Profile</span>
+    <h2 style="font-weight:400; margin-bottom:1rem;">Visitor Entry</h2>
+    <p class="simple-text" style="margin-bottom: 1.5rem;">Browsing under an unverified guest token. Production configuration identities automatically dispatch via webhooks right to your invoice inbox post verification.</p>
+    <button onclick="document.getElementById('profileOverlay').style.display='none'; document.getElementById('cartDrawerOverlay').style.display='block';" class="auth-btn">Open Shopping Cart</button>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-bottom">&copy; 2026 VeXillon Systems International. All configuration data pipelines and automated environments encrypted via Razorpay securely.</div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
