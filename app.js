@@ -6,8 +6,10 @@
 
 const SYSTEM_VALID_ACCOUNTS = {
   "operator@vexillon.ai": "VEX2026",
-  "leisha@somaiya.edu": "CLOUDSEC99"
+  "name@work.edu": "PASSWORD123"
 };
+
+const API_URL = 'https://vexillon-platform.onrender.com';
 
 const S = {
   cart: [],
@@ -127,7 +129,7 @@ window.attemptTerminalAuthentication = async function() {
   if (!email || !password) return alert("Please fill in all security credentials.");
 
   try {
-    const response = await fetch('http://localhost:8080/api/auth/login', {
+    const response = await fetch(${API_URL}/api/auth/login, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password })
@@ -249,7 +251,7 @@ window.triggerLiveBotExecution = async function(idx, route) {
     if (idx === 1) bodyData = { text: inputEl.value };
     if (idx === 2) bodyData = { transcript: inputEl.value };
 
-    const response = await fetch(`http://localhost:8080/api/engines/${route}`, {
+    const response = await fetch(${API_URL}/api/engines/${route}, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(bodyData)
@@ -386,7 +388,7 @@ window.proceedToCheckoutPayment = async function() {
 
   try {
     // Notice the clean endpoint path matching your server setup
-    const orderResponse = await fetch('http://localhost:8080/api/checkout/create-order', {
+    const orderResponse = await fetch(${API_URL}/api/checkout/create-order, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ amount: computedTotalBill, currency: S.region === 'IN' ? 'INR' : 'USD' })
@@ -405,7 +407,7 @@ window.proceedToCheckoutPayment = async function() {
       description: `License Sync: ${S.cart.length} Core Engine Modules`,
       order_id: orderDetails.id,
       handler: async function (verifiedResponse) {
-        const verificationCheck = await fetch('http://localhost:8080/api/checkout/verify-payment', {
+        const verificationCheck = await fetch(${API_URL}/api/checkout/verify-payment, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
