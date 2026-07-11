@@ -22,8 +22,8 @@ const S = {
 // BOT 02 ADJUSTED AND LOGICALLY VALUED HIGHER THAN BOT 03 AS REQUESTED
 const ENGINES = [
   { name: 'The Email & Draft Assistant ✉️', baseRates: { IN: 1499, US: 19, GB: 15, EU: 18, JP: 2800 }, tag: 'Bot 01 · Automated Messaging', desc: 'Reads incoming emails safely and writes accurate draft replies for you automatically.', caps: ['Reads and organizes messages', 'Prepares personalized drafts'] },
-  { name: 'The Autonomous Meeting Representative 📝', baseRates: { IN: 3499, US: 45, GB: 38, EU: 42, JP: 6500 }, tag: 'Bot 02 · Full Attendance Coverage', desc: 'Joins active video conference interfaces autonomously on your behalf, recording accurate summaries and detailed task listings.', caps: ['Attends live virtual meeting rooms', 'Assembles actionable file transcripts'] },
-  { name: 'The Voice Task Multitasker 🎙️', baseRates: { IN: 2499, US: 29, GB: 24, EU: 26, JP: 4500 }, tag: 'Bot 03 · Audio To-Dos', desc: 'Converts quick spoken voice notes on your phone straight into organized checklist items.', caps: ['Saves quick audio thoughts', 'Builds step-by-step checklists'] }
+  { name: 'The Autonomous Meeting Representative 📝', baseRates: { IN: 2499, US: 35, GB: 29, EU: 32, JP: 4500 }, tag: 'Bot 02 · Full Attendance Coverage', desc: 'Joins active video conference interfaces autonomously on your behalf, recording accurate summaries and detailed task listings.', caps: ['Attends live virtual meeting rooms', 'Assembles actionable file transcripts'] },
+  { name: 'The Voice Task Multitasker 🎙️', baseRates: { IN: 1999, US: 25, GB: 20, EU: 22, JP: 3800 }, tag: 'Bot 03 · Audio To-Dos', desc: 'Converts quick spoken voice notes on your phone straight into organized checklist items.', caps: ['Saves quick audio thoughts', 'Builds step-by-step checklists'] }
 ];
 
 const REGIONS = {
@@ -400,7 +400,7 @@ window.proceedToCheckoutPayment = async function() {
     const orderDetails = orderData.order;
 
     const gatewayOptions = {
-      key: "your_razorpay_public_key_id_here", 
+      key: "rzp_test_TAvu7lTGigQeAJ", 
       amount: orderDetails.amount,
       currency: orderDetails.currency,
       name: "VeXillon Ltd.",

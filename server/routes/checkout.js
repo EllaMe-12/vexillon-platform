@@ -26,20 +26,28 @@ router.post('/create-order', async (req, res) => {
 });
 
 // Clean root path: /api/checkout/verify-payment
+// Clean root path: /api/checkout/verify-payment
 router.post('/verify-payment', async (req, res) => {
   try {
     const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
-    const secureTokenPayload = `${razorpay_order_id}|${razorpay_payment_id}`;
+
+    // 1. Force explicit primitive string construction
+    const secureTokenPayload = String(razorpay_order_id) + '|' + String(razorpay_payment_id);
+    
+    // 2. Compute the verification hash directly using the environment variable secret
     const expectedSignature = crypto
       .createHmac('sha256', process.env.RAZORPAY_KEY_SECRET)
-      .update(secureTokenPayload.toString())
+      .update(secureTokenPayload)
       .digest('hex');
 
+    // 3. Clear the signature verification gate
     if (expectedSignature === razorpay_signature) {
       return res.status(200).json({ success: true });
     }
+    
     return res.status(400).json({ success: false, error: 'Signature mismatch.' });
   } catch (error) {
+    console.error('[Crypto Error]:', error); // Added error logging for local debugging
     return res.status(500).json({ error: 'Internal validation failure.' });
   }
 });
