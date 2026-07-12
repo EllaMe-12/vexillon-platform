@@ -29,6 +29,7 @@ router.post('/create-order', async (req, res) => {
 // Clean root path: /api/checkout/verify-payment
 router.post('/verify-payment', async (req, res) => {
   try {
+    console.log("Incoming Verification Payload:", req.body);
     const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
 
     // Force strict primitive string concatenation
