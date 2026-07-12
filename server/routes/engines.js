@@ -1,7 +1,6 @@
 import express from 'express';
 import { GoogleGenAI } from '@google/genai';
-import { verifyToken } from '../middleware/auth.js';
-
+import { verifyToken } from '../middleware.js';
 const router = express.Router();
 
 // Initialize the Gemini API client using your loaded environment variables

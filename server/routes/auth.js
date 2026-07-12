@@ -1,5 +1,6 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
+import { verifyToken } from '../middleware.js'; // Updated path to root directory
 
 const router = express.Router();
 
