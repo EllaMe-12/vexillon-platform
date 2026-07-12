@@ -406,22 +406,21 @@ window.proceedToCheckoutPayment = async function() {
       name: "VeXillon Ltd.",
       description: `License Sync: ${S.cart.length} Core Engine Modules`,
       order_id: orderDetails.id,
+      
       handler: async function (verifiedResponse) {
-      const verificationCheck = await fetch(`${API_URL}/api/checkout/verify-payment`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-      // Map Razorpay's native parameters to the keys your backend expects
-      razorpay_order_id: verifiedResponse.razorpay_order_id,
-      razorpay_payment_id: verifiedResponse.razorpay_payment_id,
-      razorpay_signature: verifiedResponse.razorpay_signature
-    })
-  });
+        const verificationCheck = await fetch(`${API_URL}/api/checkout/verify-payment`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            razorpay_order_id: verifiedResponse.razorpay_order_id,
+            razorpay_payment_id: verifiedResponse.razorpay_payment_id,
+            razorpay_signature: verifiedResponse.razorpay_signature
+          })
+        });
 
-  const verificationResult = await verificationCheck.json();
-  // ... rest of your code
-
+        // Ensure this line below only appears ONCE:
         const verificationResult = await verificationCheck.json();
+        
         if (verificationResult.success) {
           alert("Payment verified successfully.");
           S.cart.forEach(id => {
@@ -439,6 +438,7 @@ window.proceedToCheckoutPayment = async function() {
           alert(`Security integrity check failed: ${verificationResult.error}`);
         }
       },
+
       prefill: {
         email: S.authenticatedUser ? S.authenticatedUser.email : "operator@vexillon.ai"
       },
