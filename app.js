@@ -140,6 +140,8 @@ window.attemptTerminalAuthentication = async function() {
     if (!response.ok) {
       throw new Error(data.error || "Authentication failed.");
     }
+    localStorage.setItem('vexillon_token', data.token);
+    
 
     // Persist session to local storage browser matrix
     localStorage.setItem('vexillon_session', JSON.stringify(data.user));
@@ -243,6 +245,7 @@ window.triggerLiveBotExecution = async function(idx, route) {
 
   outputEl.style.display = "block";
   outputEl.innerText = "Processing through telemetry pipeline...";
+  const token = localStorage.getItem('vexillon_token');
 
   try {
     // Construct request object depending on which bot is called
@@ -253,7 +256,11 @@ window.triggerLiveBotExecution = async function(idx, route) {
 
     const response = await fetch(`${API_URL}/api/engines/${route}`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 
+        'Content-Type': 'application/json',
+        // 3. ADD THIS LINE: Inject the authorization signature
+        'Authorization': `Bearer ${token}`
+      },
       body: JSON.stringify(bodyData)
     });
 

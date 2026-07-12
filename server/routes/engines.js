@@ -1,10 +1,14 @@
 import express from 'express';
 import { GoogleGenAI } from '@google/genai';
+import { verifyToken } from '../middleware/auth.js';
 
 const router = express.Router();
 
 // Initialize the Gemini API client using your loaded environment variables
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+
+// Enforce token validation across all engine routes universally
+router.use(verifyToken);
 
 /**
  * ── BOT 01: THE EMAIL & DRAFT ASSISTANT ──
