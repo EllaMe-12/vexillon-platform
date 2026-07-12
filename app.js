@@ -400,7 +400,7 @@ window.proceedToCheckoutPayment = async function() {
     const orderDetails = orderData.order;
 
     const gatewayOptions = {
-      key: "rzp_test_TAvu7lTGigQeAJ", 
+      key: "rzp_test_TCK8AFRWZ8ZMNk", 
       amount: orderDetails.amount,
       currency: orderDetails.currency,
       name: "VeXillon Ltd.",
