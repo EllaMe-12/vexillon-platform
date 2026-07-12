@@ -407,15 +407,19 @@ window.proceedToCheckoutPayment = async function() {
       description: `License Sync: ${S.cart.length} Core Engine Modules`,
       order_id: orderDetails.id,
       handler: async function (verifiedResponse) {
-        const verificationCheck = await fetch(`${API_URL}/api/checkout/verify-payment`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            razorpay_order_id: verifiedResponse.order_id,
-            razorpay_payment_id: verifiedResponse.payment_id,
-            razorpay_signature: verifiedResponse.signature
-          })
-        });
+      const verificationCheck = await fetch(`${API_URL}/api/checkout/verify-payment`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+      // Map Razorpay's native parameters to the keys your backend expects
+      razorpay_order_id: verifiedResponse.razorpay_order_id,
+      razorpay_payment_id: verifiedResponse.razorpay_payment_id,
+      razorpay_signature: verifiedResponse.razorpay_signature
+    })
+  });
+
+  const verificationResult = await verificationCheck.json();
+  // ... rest of your code
 
         const verificationResult = await verificationCheck.json();
         if (verificationResult.success) {
