@@ -29,22 +29,33 @@ router.post('/create-order', async (req, res) => {
 // Clean root path: /api/checkout/verify-payment
 router.post('/verify-payment', async (req, res) => {
   try {
-    console.log("Incoming Verification Payload:", req.body);
-    const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
+    console.log("=== CRYPTO DIAGNOSTIC START ===");
+    console.log("Raw req.body received:", req.body);
 
-    // Force strict primitive string concatenation
+    const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
+    
+    console.log("Parsed order_id:", razorpay_order_id);
+    console.log("Parsed payment_id:", razorpay_payment_id);
+    console.log("Parsed signature:", razorpay_signature);
+
     const secureTokenPayload = String(razorpay_order_id) + '|' + String(razorpay_payment_id);
+    console.log("Generated String Payload:", `"${secureTokenPayload}"`);
     
     const expectedSignature = crypto
       .createHmac('sha256', process.env.RAZORPAY_KEY_SECRET)
       .update(secureTokenPayload)
       .digest('hex');
 
+    console.log("Server Computed Signature:", expectedSignature);
+    console.log("Razorpay Expected Signature:", razorpay_signature);
+    console.log("=== CRYPTO DIAGNOSTIC END ===");
+
     if (expectedSignature === razorpay_signature) {
       return res.status(200).json({ success: true });
     }
     return res.status(400).json({ success: false, error: 'Signature mismatch.' });
   } catch (error) {
+    console.error("Auth System Error:", error);
     return res.status(500).json({ error: 'Internal validation failure.' });
   }
 });
